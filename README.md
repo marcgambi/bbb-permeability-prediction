@@ -292,7 +292,7 @@ Possible future developments include:
 
 # Author
 
-**Marco Gambino**
+**Dott. Marco Gambino**
 
 M.Sc. Biomedical Engineering  
 University of Palermo
