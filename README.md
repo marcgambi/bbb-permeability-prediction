@@ -79,11 +79,12 @@ This model achieved the best predictive performance among all tested approaches.
 
 ## Dataset
 
-The project combines publicly available blood-brain barrier permeability datasets to create a larger regression dataset for logBB prediction.
+The models were trained on a curated molecular dataset containing 1,303
+compounds with experimentally measured blood-brain barrier partition
+coefficients (logBB).
 
-The final dataset contains over 1300 molecules after preprocessing and descriptor extraction.
-
-*The original datasets are not redistributed in this repository.*
+The processed dataset, molecular structures, and trained model checkpoints
+are not included in this repository.
 
 ---
 
