@@ -106,11 +106,11 @@ All final models were evaluated on the same independent hold-out test set,
 consisting of 196 molecules that were never used for model training,
 feature selection, hyperparameter optimization, or ensemble-weight selection.
 
-| Model | Test R² | Test RMSE | Test MAE |
+| Model | Test R² | Test RMSE |
 |---|---:|---:|---:|
-| ExtraTrees 5-fold ensemble | 0.4383 | 0.7513 | — |
-| SchNet multi-seed ensemble | 0.5146 | 0.6984 | 0.4720 |
-| **Weighted hybrid ensemble** | **0.5161** | **0.6974** | **0.4614** |
+| ExtraTrees 5-fold ensemble | 0.4383 | 0.7513 | 
+| SchNet multi-seed ensemble | 0.5146 | 0.6984 | 
+| **Weighted hybrid ensemble** | **0.5161** | **0.6974** | 
 
 
 The SchNet multi-seed ensemble combined the predictions of 15 independently
