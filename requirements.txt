@@ -1,0 +1,7 @@
+numpy
+pandas
+scikit-learn
+mlxtend
+torch
+torch-geometric
+rdkit
