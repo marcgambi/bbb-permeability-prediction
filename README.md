@@ -108,7 +108,7 @@ feature selection, hyperparameter optimization, or ensemble-weight selection.
 
 | Model | Test R² | Test RMSE | Test MAE |
 |---|---:|---:|---:|
-| ExtraTrees 5-fold ensemble | 0.4383 | — | — |
+| ExtraTrees 5-fold ensemble | 0.4383 | 0.7513 | — |
 | SchNet multi-seed ensemble | 0.5146 | 0.6984 | 0.4720 |
 | **Weighted hybrid ensemble** | **0.5161** | **0.6974** | **0.4614** |
 
