@@ -252,8 +252,8 @@ Possible future developments include:
 M.Sc. Biomedical Engineering  
 University of Palermo
 
-- LinkedIn: https://www.linkedin.com/in/TUO-PROFILO
-- GitHub: https://github.com/YOUR_USERNAME
+- LinkedIn: https://www.linkedin.com/in/marco-gambino-7a3071138/
+- GitHub: https://github.com/marcgambi
 
 ---
 
