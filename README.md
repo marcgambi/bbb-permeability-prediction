@@ -102,28 +102,20 @@ Nested cross-validation is then performed to evaluate the robustness of the hybr
 
 ## Results
 
-All final models were evaluated on the same independent hold-out test set,
-consisting of 196 molecules that were never used for model training,
-feature selection, hyperparameter optimization, or ensemble-weight selection.
+## Results
 
-| Model | Test R² | Test RMSE |
-|---|---:|---:|---:|
-| ExtraTrees 5-fold ensemble | 0.4383 | 0.7513 | 
-| SchNet multi-seed ensemble | 0.5146 | 0.6984 | 
-| **Weighted hybrid ensemble** | **0.5161** | **0.6974** | 
+The models were evaluated on the same independent hold-out test set (196 molecules), which was never used during feature selection, hyperparameter optimization, or model training.
 
+Since the curated molecular dataset used in this thesis cannot be publicly distributed, the results reported below are provided for methodological transparency only and are not intended as directly reproducible benchmarks from this repository alone.
 
-The SchNet multi-seed ensemble combined the predictions of 15 independently
-trained models, obtained from three model seeds and five cross-validation
-folds. This strategy increased the test R² from 0.4157 for the single enriched
-SchNet model to 0.5146 for the final ensemble.
+| Model | Test R² |
+|:-----------------------------|---------:|
+| ExtraTrees 5-fold Ensemble | 0.4383 |
+| SchNet Multi-Seed Ensemble | 0.5146 |
+| **Weighted Hybrid Ensemble** | **0.5161** |
 
-The ExtraTrees five-fold ensemble achieved a test R² of 0.4383, improving
-slightly over the individually optimized ExtraTrees model, which obtained
-a test R² of 0.4266.
+The final model combines the predictions of the SchNet multi-seed ensemble and the ExtraTrees 5-fold ensemble using a weighted average, where the ensemble weight is selected exclusively from out-of-fold predictions to avoid information leakage.
 
-The final hybrid model combined the SchNet and ExtraTrees ensemble predictions
-using the following weighted formulation:
 
 <p align="center">
   <strong>
