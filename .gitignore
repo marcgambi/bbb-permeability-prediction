@@ -1,0 +1,66 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDE and editors
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Environment variables and credentials
+.env
+.env.*
+*.key
+
+# Local datasets
+data/*
+!data/README.md
+
+# Trained models and checkpoints
+checkpoints/
+models_checkpoints/
+saved_models/
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.pickle
+*.joblib
+
+# Generated results
+results/*
+!results/README.md
+
+# Figures generated during execution
+outputs/
+figures/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Build and packaging files
+build/
+dist/
+*.egg-info/
+
+# Test and coverage files
+.coverage
+htmlcov/
+.pytest_cache/
