@@ -8,9 +8,8 @@ This repository contains the source code developed for my Master's thesis in Bio
 
 ## Methodological Pipeline
 
-<p align="center">
-  <img src="docs/pipeline.png" alt="Methodological Pipeline" width="1000">
-</p>
+<img width="440" height="339" alt="image" src="https://github.com/user-attachments/assets/0dd4da89-3b21-4d62-80ab-5c5519a36212" />
+
 
 The proposed workflow combines complementary molecular representations to improve continuous logBB prediction.
 
@@ -101,49 +100,95 @@ Nested cross-validation is then performed to evaluate the robustness of the hybr
 
 # Results
 
-The hybrid ensemble consistently achieved better predictive performance than the individual models by combining graph-based structural information with handcrafted molecular descriptors.
+## Results
 
-The final evaluation was performed on an independent hold-out test set using:
+All final models were evaluated on the same independent hold-out test set,
+consisting of 196 molecules that were never used for model training,
+feature selection, hyperparameter optimization, or ensemble-weight selection.
 
-- R²
-- RMSE
-- MAE
+| Model | Test R² | Test RMSE | Test MAE |
+|---|---:|---:|---:|
+| ExtraTrees 5-fold ensemble | 0.4383 | — | — |
+| SchNet multi-seed ensemble | 0.5146 | 0.6984 | 0.4720 |
+| **Weighted hybrid ensemble** | **0.5161** | **0.6974** | **0.4614** |
 
-| Model | R² | RMSE | MAE |
-|------|----:|----:|----:|
-| ExtraTrees | *(insert final value)* | *(insert)* | *(insert)* |
-| SchNet | *(insert final value)* | *(insert)* | *(insert)* |
-| **Hybrid Ensemble** | **0.5161** | **0.6974** | **0.4254** |
+
+The SchNet multi-seed ensemble combined the predictions of 15 independently
+trained models, obtained from three model seeds and five cross-validation
+folds. This strategy increased the test R² from 0.4157 for the single enriched
+SchNet model to 0.5146 for the final ensemble.
+
+The ExtraTrees five-fold ensemble achieved a test R² of 0.4383, improving
+slightly over the individually optimized ExtraTrees model, which obtained
+a test R² of 0.4266.
+
+The final hybrid model combined the SchNet and ExtraTrees ensemble predictions
+using the following weighted formulation:
+
+<p align="center">
+  <strong>
+    ŷ<sub>hybrid</sub> =
+    α · ŷ<sub>SchNet</sub> +
+    (1 − α) · ŷ<sub>ExtraTrees</sub>
+  </strong>
+</p>
+
+The ensemble coefficient was selected exclusively from out-of-fold predictions.
+The optimal value was:
+
+<p align="center">
+  <strong>α = 0.65</strong>
+</p>
+
+Therefore, the final prediction assigned a weight of 0.65 to SchNet and 0.35
+to ExtraTrees.
+
+A nested five-fold procedure was also applied specifically to the selection
+of the ensemble weight, obtaining:
+
+<p align="center">
+  <strong>Cross-validation R² = 0.562 ± 0.057</strong>
+</p>
+
+The weighted hybrid ensemble achieved the best overall hold-out performance,
+with a test R² of 0.5161, RMSE of 0.6974, and MAE of 0.4614. The improvement
+over the SchNet ensemble was limited but consistent, reflecting the relatively
+high correlation between the out-of-fold residuals of SchNet and ExtraTrees
+(r = 0.782).
 
 ---
 
-## Hybrid Predictions
+### Experimental versus Predicted logBB
 
-<p align="center">
-<img src="docs/scatter_hybrid.png" width="700">
-</p>
+<img width="465" height="166" alt="image" src="https://github.com/user-attachments/assets/d94a9788-72c6-4996-bbc2-b50ad82eeccf" />
 
-Comparison between experimental and predicted logBB values on the independent hold-out test set.
 
----
+Comparison between experimental and predicted logBB values for the SchNet
+ensemble, ExtraTrees ensemble, and weighted hybrid model on the hold-out test set.
 
-## Ensemble Weight Optimization
+### Ensemble Weight Selection
 
-<p align="center">
-<img src="docs/alpha_curve.png" width="700">
-</p>
+<img width="361" height="246" alt="image" src="https://github.com/user-attachments/assets/5505e2d7-f1a7-46c5-a18b-e4deccfff016" />
 
-Selection of the optimal hybrid weight (α) using Out-of-Fold predictions.
 
----
+The ensemble weight was selected using only out-of-fold predictions.
+The optimal value was α = 0.65.
 
-## SchNet Training
+### Nested Cross-Validation Stability
 
-<p align="center">
-<img src="docs/training_curve.png" width="700">
-</p>
+<img width="353" height="241" alt="image" src="https://github.com/user-attachments/assets/c3d80f54-4ca8-405a-b19e-f38c378adcc7" />
 
-Example of training and validation curves showing early stopping during model optimization.
+
+The nested weight-selection procedure produced a mean R² of 0.562 with a
+standard deviation of 0.057 across the five folds.
+
+### Hybrid Model Residual Analysis
+
+<img width="440" height="180" alt="image" src="https://github.com/user-attachments/assets/728ad285-8710-48b7-8817-1380fc41c4ef" />
+
+
+The residuals were approximately centered around zero and did not show an
+evident systematic relationship with the predicted logBB values.
 
 ---
 
